@@ -1,0 +1,108 @@
+import React, { useState } from 'react';
+
+interface ContactUsPageProps {
+  onBack: () => void;
+}
+
+const ContactUsPage: React.FC<ContactUsPageProps> = ({ onBack }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<string | null>(null);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!name || !email || !message) {
+      setStatus('Please fill in all fields before submitting.');
+      return;
+    }
+
+    setStatus('Thanks! Your message has been sent. Our team will respond within 24 hours.');
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 py-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <button onClick={onBack} className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 font-semibold text-sm mb-8">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+          Back to Home
+        </button>
+
+        <div className="bg-white rounded-[2rem] shadow-2xl border border-slate-200 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-10 sm:p-14 text-white flex flex-col justify-between gap-8">
+              <div>
+                <span className="text-sm font-bold uppercase tracking-[0.32em] text-blue-200">Contact Us</span>
+                <h1 className="mt-6 text-4xl sm:text-5xl font-black leading-tight">Tour Help Desk Support</h1>
+                <p className="mt-5 text-base sm:text-lg text-slate-100 leading-relaxed max-w-xl">
+                  Have a question about your booking, flight status, or travel plans? Send us a message and our travel specialists will get back to you quickly.
+                </p>
+              </div>
+              <div className="space-y-4 text-sm text-blue-100">
+                <p className="font-bold">Need faster support?</p>
+                <p>Call our hotline anytime: <span className="font-black">1800 22 33 555</span></p>
+                <p>Email us at <a href="mailto:support@tourhelpdesk.com" className="underline">support@tourhelpdesk.com</a></p>
+              </div>
+            </div>
+
+            <div className="p-8 sm:p-10">
+              <div className="mb-8">
+                <h2 className="text-3xl font-black text-slate-900 mb-3">Send a message</h2>
+                <p className="text-slate-500 max-w-xl">We’re here to help with booking support, travel advice, and account questions.</p>
+              </div>
+
+              {status && (
+                <div className="mb-6 rounded-3xl border border-blue-100 bg-blue-50 p-4 text-blue-700 text-sm font-semibold">
+                  {status}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <label className="block">
+                  <span className="text-sm font-bold text-slate-700">Name</span>
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your full name"
+                    className="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="text-sm font-bold text-slate-700">Email</span>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-5 py-4 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  />
+                </label>
+
+                <label className="block">
+                  <span className="text-sm font-bold text-slate-700">Message</span>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Tell us how we can help"
+                    rows={6}
+                    className="mt-2 w-full rounded-[1.75rem] border border-slate-200 bg-slate-50 px-5 py-4 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  />
+                </label>
+
+                <button type="submit" className="w-full rounded-3xl bg-blue-600 text-white font-black py-4 text-sm uppercase tracking-[0.12em] hover:bg-blue-700 transition-all shadow-lg shadow-blue-100">
+                  Submit Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactUsPage;

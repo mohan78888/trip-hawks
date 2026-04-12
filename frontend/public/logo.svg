@@ -1,0 +1,37 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Purple Hawk Bird Logo - Optimized -->
+  <defs>
+    <linearGradient id="hawkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Bird Body -->
+  <ellipse cx="32" cy="38" rx="8" ry="11" fill="url(#hawkGradient)"/>
+  
+  <!-- Left Wing Feathers -->
+  <path d="M 24 32 Q 13 26 10 19 Q 12 23 15 27 Q 18 30 22 33 Z" fill="#c4b5fd" opacity="0.9"/>
+  <path d="M 22 33 Q 11 29 6 22 Q 10 26 15 30 Q 19 33 24 35 Z" fill="#a78bfa" opacity="0.85"/>
+  <path d="M 24 35 Q 13 32 8 27 Q 11 30 16 33 Q 21 36 26 37 Z" fill="#8b5cf6" opacity="0.8"/>
+  
+  <!-- Right Wing Feathers -->
+  <path d="M 40 32 Q 51 26 54 19 Q 52 23 49 27 Q 46 30 42 33 Z" fill="#c4b5fd" opacity="0.9"/>
+  <path d="M 42 33 Q 53 29 58 22 Q 54 26 49 30 Q 45 33 40 35 Z" fill="#a78bfa" opacity="0.85"/>
+  <path d="M 40 35 Q 51 32 56 27 Q 53 30 48 33 Q 43 36 38 37 Z" fill="#8b5cf6" opacity="0.8"/>
+  
+  <!-- Head -->
+  <circle cx="32" cy="30" r="6" fill="url(#hawkGradient)"/>
+  
+  <!-- Beak -->
+  <path d="M 37 30 L 40 29 L 37 31 Z" fill="#fbbf24"/>
+  
+  <!-- Eye -->
+  <circle cx="34.5" cy="29" r="1" fill="white"/>
+  <circle cx="35" cy="28.5" r="0.5" fill="#1e293b"/>
+  
+  <!-- Tail Feathers -->
+  <path d="M 32 49 Q 29 54 27 59 Q 30 56 32 52 Z" fill="#6366f1" opacity="0.7"/>
+  <path d="M 32 49 Q 35 54 37 59 Q 34 56 32 52 Z" fill="#6366f1" opacity="0.7"/>
+</svg>
