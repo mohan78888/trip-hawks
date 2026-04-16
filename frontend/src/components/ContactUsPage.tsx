@@ -24,8 +24,8 @@ const ContactUsPage: React.FC<ContactUsPageProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 py-8 lg:py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <button onClick={onBack} className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 font-semibold text-sm mb-8">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
           Back to Home
@@ -33,24 +33,30 @@ const ContactUsPage: React.FC<ContactUsPageProps> = ({ onBack }) => {
 
         <div className="bg-white rounded-[2rem] shadow-2xl border border-slate-200 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-10 sm:p-14 text-white flex flex-col justify-between gap-8">
+            <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-6 sm:p-10 text-white flex flex-col justify-between gap-6 sm:gap-8">
               <div>
-                <span className="text-sm font-bold uppercase tracking-[0.32em] text-blue-200">Contact Us</span>
-                <h1 className="mt-6 text-4xl sm:text-5xl font-black leading-tight">Tour Help Desk Support</h1>
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.32em] text-blue-200">Contact Us</span>
+                <h1 className="mt-4 sm:mt-6 text-3xl sm:text-4xl font-black leading-tight">Tour Help Desk Support</h1>
                 <p className="mt-5 text-base sm:text-lg text-slate-100 leading-relaxed max-w-xl">
                   Have a question about your booking, flight status, or travel plans? Send us a message and our travel specialists will get back to you quickly.
                 </p>
               </div>
               <div className="space-y-4 text-sm text-blue-100">
                 <p className="font-bold">Need faster support?</p>
-                <p>Call our hotline anytime: <span className="font-black">1800 22 33 555</span></p>
-                <p>Email us at <a href="mailto:support@tourhelpdesk.com" className="underline">support@tourhelpdesk.com</a></p>
+                <p>Call our hotline anytime: <span className="font-black">1888 791 8007</span></p>
+                <p>Email us at <a href="mailto:care@tourhelpdesk.com" className="underline">care@tourhelpdesk.com</a></p>
+                <div className="pt-4 mt-2 border-t border-blue-400/30">
+                  <p className="font-bold mb-1 text-white">Company Address:</p>
+                  <p>Tour Help Desk inc.</p>
+                  <p>7952, Graham Ave,</p>
+                  <p>Burnaby, BC, V3N1V9 Canada</p>
+                </div>
               </div>
             </div>
 
-            <div className="p-8 sm:p-10">
-              <div className="mb-8">
-                <h2 className="text-3xl font-black text-slate-900 mb-3">Send a message</h2>
+            <div className="p-6 sm:p-10">
+              <div className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2 sm:mb-3">Send a message</h2>
                 <p className="text-slate-500 max-w-xl">We’re here to help with booking support, travel advice, and account questions.</p>
               </div>
 
@@ -88,7 +94,7 @@ const ContactUsPage: React.FC<ContactUsPageProps> = ({ onBack }) => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell us how we can help"
-                    rows={6}
+                    rows={4}
                     className="mt-2 w-full rounded-[1.75rem] border border-slate-200 bg-slate-50 px-5 py-4 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                   />
                 </label>

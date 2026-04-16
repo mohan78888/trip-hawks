@@ -10,7 +10,14 @@ interface FooterProps {
   onContactClick?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onLegalClick, onAboutClick, onPrivacyClick, onTermsClick, onCreditCardVerificationClick, onContactClick }) => {
+const Footer: React.FC<FooterProps> = ({ 
+  onLegalClick = () => {}, 
+  onAboutClick = () => {}, 
+  onPrivacyClick = () => {}, 
+  onTermsClick = () => {}, 
+  onCreditCardVerificationClick = () => {}, 
+  onContactClick = () => {} 
+}) => {
   return (
     <footer className="bg-slate-900 text-slate-400 py-12 md:py-20 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">

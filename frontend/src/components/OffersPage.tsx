@@ -176,7 +176,7 @@ const OffersPage: React.FC<OffersPageProps> = ({ onBack }) => {
           <div className="shrink-0 relative z-10">
              <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 text-center">
                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-4">Priority Support Line</span>
-                <a href="tel:18002233555" className="text-3xl font-black text-white hover:text-orange-500 transition-colors block mb-6">1800 22 33 555</a>
+                <a href="tel:18887918007" className="text-3xl font-black text-white hover:text-orange-500 transition-colors block mb-6">1888 791 8007</a>
                 <div className="flex items-center justify-center gap-2 text-emerald-400 text-xs font-bold">
                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
                    Expert Agents Online Now

@@ -19,6 +19,7 @@ import CreditCardVerificationPage from './components/CreditCardVerificationPage'
 import HotelsPage from './components/HotelsPage';
 import ContactUsPage from './components/ContactUsPage';
 import InternationalRoutes from './components/InternationalRoutes';
+import Login from './components/Login';
 import { SearchParams, Flight } from './types';
 import { flightService } from './services/flightService';
 import { ClerkProvider } from '@clerk/clerk-react';
@@ -147,6 +148,8 @@ const App: React.FC = () => {
           <HotelsPage />
         ) : view === 'contact' ? (
           <ContactUsPage onBack={() => setView('home')} />
+        ) : view === 'login' ? (
+          <Login onBack={() => setView('home')} />
         ) : view === 'details' && selectedFlight ? (
           <FlightDetails 
             flight={selectedFlight} 

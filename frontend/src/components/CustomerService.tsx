@@ -60,7 +60,7 @@ const CustomerService: React.FC = () => {
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-2">Toll-Free Support</h3>
             <p className="text-slate-500 text-sm mb-4">Available 24/7 for urgent help.</p>
-            <a href="tel:18002233555" className="text-2xl font-black text-blue-600 hover:underline">1800 22 33 555</a>
+            <a href="tel:18887918007" className="text-2xl font-black text-blue-600 hover:underline">1888 791 8007</a>
           </div>
 
           <div className="bg-white rounded-[2rem] p-8 shadow-xl border border-slate-100 shadow-slate-200/50 hover:shadow-2xl transition-all group">
@@ -71,7 +71,7 @@ const CustomerService: React.FC = () => {
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-2">Email Us</h3>
             <p className="text-slate-500 text-sm mb-4">Replies within 2 hours.</p>
-            <a href="mailto:support@tourhelpdesk.com" className="text-lg font-bold text-blue-600 hover:underline">support@tourhelpdesk.com</a>
+            <a href="mailto:care@tourhelpdesk.com" className="text-lg font-bold text-blue-600 hover:underline">care@tourhelpdesk.com</a>
           </div>
 
           <div className="bg-white rounded-[2rem] p-8 shadow-xl border border-slate-100 shadow-slate-200/50 hover:shadow-2xl transition-all group">

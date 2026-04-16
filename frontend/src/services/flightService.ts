@@ -2,15 +2,17 @@
 import { Flight, SearchParams } from '../types';
 
 // In dev: Vite proxies /api → localhost:5000
-// In production: VITE_API_URL must be set to deployed backend URL in Netlify env vars
-const API_BASE = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : '/api';
+// In production: VITE_API_URL must be set to deployed backend URL
+const getApiBase = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  if (apiUrl) return `${apiUrl}/api`;
+  return '/api';
+};
 
 export const flightService = {
   async searchFlights(params: SearchParams): Promise<Flight[]> {
     try {
-      const response = await fetch(`${API_BASE}/flights/search`, {
+      const response = await fetch(`${getApiBase()}/flights/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params),

@@ -10,8 +10,8 @@ import { signup, login, getProfile } from './controllers/authController.js';
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS — allow localhost in dev, and FRONTEND_URL in production
-const allowedOrigins = [
+// ── CORS ──────────────────────────────────────────────────────────────────────
+const allowedOrigins: string[] = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://127.0.0.1:3000',
@@ -26,24 +26,31 @@ app.use(cors({
     // Allow requests with no origin (mobile apps, Postman, curl)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
-    // Allow any netlify.app subdomain
-    if (origin.endsWith('.netlify.app')) return callback(null, true);
+    // Allow any netlify.app or vercel.app subdomain
+    if (origin.endsWith('.netlify.app') || origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
     callback(new Error(`CORS blocked: ${origin}`));
   },
   credentials: true
 }));
 
-// Clerk webhook MUST be before express.json() to verify raw bytes
+// ── Clerk webhook MUST be before express.json() ──────────────────────────────
 app.post('/api/webhooks/clerk', express.raw({ type: 'application/json' }), clerkWebhook);
 
-// Body parsing
+// ── Body parsing ──────────────────────────────────────────────────────────────
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// MongoDB connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/triphawks';
+// ── MongoDB ───────────────────────────────────────────────────────────────────
+const MONGO_URI = process.env.MONGO_URI || '';
+
+if (!MONGO_URI) {
+  console.warn('⚠️  MONGO_URI not set — database features will not work');
+}
 
 const connectDB = async () => {
+  if (!MONGO_URI) return;
   try {
     await mongoose.connect(MONGO_URI);
     console.log('✅ MongoDB connected successfully');
@@ -60,25 +67,25 @@ mongoose.connection.on('reconnected', () => console.log('✅ MongoDB reconnected
 
 connectDB();
 
-// ── Auth Routes ──────────────────────────────────────────────────────────────
+// ── Auth Routes ───────────────────────────────────────────────────────────────
 app.post('/api/auth/signup', signup);
 app.post('/api/auth/login', login);
 app.get('/api/auth/profile', authMiddleware, getProfile as any);
 
-// ── User Routes ──────────────────────────────────────────────────────────────
+// ── User Routes ───────────────────────────────────────────────────────────────
 app.get('/api/user/profile', authMiddleware, (req: any, res: Response) => {
   res.json({ message: 'Secure Profile Data', userId: req.auth?.userId });
 });
 
-// ── Flight Routes ────────────────────────────────────────────────────────────
+// ── Flight Routes ─────────────────────────────────────────────────────────────
 app.post('/api/flights/search', searchFlights);
 app.get('/api/flights/:id', getFlightDetails);
 
-// ── AI Routes ────────────────────────────────────────────────────────────────
+// ── AI Routes ─────────────────────────────────────────────────────────────────
 app.post('/api/ai/chat', chatWithAgent);
 
-// ── Health / Status ──────────────────────────────────────────────────────────
-app.get('/health', (req: Request, res: Response) => {
+// ── Health / Status ───────────────────────────────────────────────────────────
+app.get('/health', (_req: Request, res: Response) => {
   res.json({
     status: 'OK',
     timestamp: new Date().toISOString(),
@@ -86,26 +93,32 @@ app.get('/health', (req: Request, res: Response) => {
   });
 });
 
-app.get('/api/status', (req: Request, res: Response) => {
+app.get('/api/status', (_req: Request, res: Response) => {
   res.json({
     status: 'Backend is running',
     timestamp: new Date().toISOString(),
     database: {
       status: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
       name: mongoose.connection.name || 'unknown',
-      host: mongoose.connection.host || 'unknown'
     }
   });
 });
 
-// ── Error Handlers ───────────────────────────────────────────────────────────
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error('Global error:', err);
-  res.status(500).json({ message: 'Internal server error' });
-});
-
+// ── 404 Handler ───────────────────────────────────────────────────────────────
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: `Route not found: ${req.originalUrl}` });
+});
+
+// ── Global Error Handler ──────────────────────────────────────────────────────
+// IMPORTANT: Must have 4 params for Express to treat it as error handler
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  console.error('Global error:', err);
+  // Don't expose stack traces in production
+  const isDev = process.env.NODE_ENV !== 'production';
+  res.status(err.status || 500).json({ 
+    message: err.message || 'Internal server error',
+    ...(isDev && { stack: err.stack })
+  });
 });
 
 app.listen(PORT, () => {

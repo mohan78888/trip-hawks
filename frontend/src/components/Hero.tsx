@@ -46,8 +46,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
             Where will you <span className="text-purple-600">fly next?</span>
           </h1>
           <p className="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-            Book your flights with India's most trusted premium airline partner.
-            Experience luxury in every mile.
+           Book international flights with trusted global airlines. Experience comfort, seamless service, and luxury in every journey
           </p>
         </div>
 

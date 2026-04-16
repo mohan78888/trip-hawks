@@ -57,7 +57,7 @@ const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
                 <h4 className="font-bold text-blue-900 mb-2">How it works:</h4>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
                   <li><span className="font-bold">Exclusive Sourcing:</span> These fares are negotiated in bulk or sourced from non-public corporate GDS channels.</li>
-                  <li><span className="font-bold">Hotline Only:</span> Due to technical and contractual limitations, these specific fares cannot be booked directly through our website and require verification via our 24/7 hotline at <span className="text-blue-600 font-black underline">1800 22 33 555</span>.</li>
+                  <li><span className="font-bold">Hotline Only:</span> Due to technical and contractual limitations, these specific fares cannot be booked directly through our website and require verification via our 24/7 hotline at <span className="text-blue-600 font-black underline">1888 791 8007</span>.</li>
                   <li><span className="font-bold">Real-time Availability:</span> Offline prices are highly dynamic and subject to immediate verification during the call.</li>
                 </ul>
               </div>

@@ -92,7 +92,7 @@ const PromotionalPopup: React.FC<PromotionalPopupProps> = ({ onClose, minPrice, 
                  <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-600 text-white rounded-full flex items-center justify-center animate-pulse shrink-0">
                    <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                  </div>
-                 <a href="tel:18002233555" className="text-lg sm:text-xl md:text-2xl font-black text-blue-900 hover:text-blue-600 transition-colors whitespace-nowrap">1800 22 33 555</a>
+                 <a href="tel:18887918007" className="text-lg sm:text-xl md:text-2xl font-black text-blue-900 hover:text-blue-600 transition-colors whitespace-nowrap">1888 791 8007</a>
               </div>
             </div>
 

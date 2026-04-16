@@ -70,9 +70,20 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-export const getProfile = async (req: JwtAuthRequest, res: Response) => {
+// FIX: getProfile uses Clerk auth (req.auth) not JWT (req.user)
+export const getProfile = async (req: any, res: Response) => {
   try {
-    const user = await User.findById(req.user?.id);
+    // Try to find by Clerk ID first, then by JWT user id
+    const clerkId = req.auth?.userId;
+    const jwtUserId = (req as JwtAuthRequest).user?.id;
+
+    let user = null;
+    if (clerkId) {
+      user = await User.findOne({ clerkId });
+    } else if (jwtUserId) {
+      user = await User.findById(jwtUserId);
+    }
+
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json(user);
   } catch (error) {
