@@ -81,7 +81,7 @@ const Footer: React.FC<FooterProps> = ({
         </div>
         
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium uppercase tracking-wider">
-          <p>&copy; 2026 Tour Help Desk Ltd. All rights reserved.</p>
+          <p>&copy; 2026 Tour Help Desk Inc. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4">
             <button onClick={onPrivacyClick} className="hover:text-white transition-colors">Privacy Policy</button>
             <button onClick={onTermsClick} className="hover:text-white transition-colors">Terms of Service</button>

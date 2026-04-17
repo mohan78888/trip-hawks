@@ -9,7 +9,7 @@ const MOCK_HOTELS: Hotel[] = [
     location: 'Toronto, Ontario',
     rating: 4.8,
     reviewsCount: 3240,
-    pricePerNight: 28500,
+    pricePerNight: 850,
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
     tags: ['Luxury Stay', 'City Center', 'Iconic']
   },
@@ -19,7 +19,7 @@ const MOCK_HOTELS: Hotel[] = [
     location: 'Vancouver, BC',
     rating: 4.9,
     reviewsCount: 1850,
-    pricePerNight: 42000,
+    pricePerNight: 890,
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800',
     tags: ['Spa & Wellness', 'Harbour View', 'Modern Luxury']
   },
@@ -29,7 +29,7 @@ const MOCK_HOTELS: Hotel[] = [
     location: 'Banff, Alberta',
     rating: 5.0,
     reviewsCount: 5600,
-    pricePerNight: 55000,
+    pricePerNight: 900,
     image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800',
     tags: ['Mountain Resort', 'Castle Style', 'Premium']
   },
@@ -39,7 +39,7 @@ const MOCK_HOTELS: Hotel[] = [
     location: 'Montreal, Quebec',
     rating: 4.7,
     reviewsCount: 1120,
-    pricePerNight: 35000,
+    pricePerNight: 800,
     image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
     tags: ['Designer Decor', 'Gastronomy', 'Chic']
   }
@@ -48,7 +48,7 @@ const MOCK_HOTELS: Hotel[] = [
 const DESTINATIONS = [
   { name: 'Toronto', image: 'https://images.unsplash.com/photo-1503197979108-c824168d51a8?auto=format&fit=crop&q=80&w=300' },
   { name: 'Vancouver', image: 'https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&q=80&w=300' },
-  { name: 'Banff', image: 'https://images.unsplash.com/photo-1534430480872-3498386e7a56?auto=format&fit=crop&q=80&w=300' },
+  { name: 'Banff', image: 'https://images.unsplash.com/photo-1581259021841-a16d7c2a777d?q=80&w=857&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
   { name: 'Montreal', image: 'https://images.unsplash.com/photo-1519197924294-4ba991a11128?auto=format&fit=crop&q=80&w=300' }
 ];
 
@@ -185,54 +185,50 @@ const HotelsPage: React.FC = () => {
 
       {/* 4. Hotel Listing Cards (Main Content) */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 pb-10">
-        <div className="grid grid-cols-1 gap-3 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-6 gap-4">
           {MOCK_HOTELS.map((hotel) => (
-            <div key={hotel.id} className="group bg-white rounded-xl md:rounded-[1.5rem] border border-slate-100 shadow-sm hover:shadow-lg md:hover:shadow-xl transition-all duration-500 overflow-hidden flex flex-col md:flex-row">
+            <div key={hotel.id} className="group bg-white rounded-2xl md:rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col sm:flex-row h-auto sm:h-56">
               {/* Left: Image */}
-              <div className="md:w-1/3 h-32 md:h-auto overflow-hidden relative">
-                <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-2 left-2 md:top-4 md:left-4">
-                   <div className="bg-white/95 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1.5 rounded-lg flex items-center gap-1 shadow-md">
-                      <svg className="w-3 h-3 md:w-3.5 md:h-3.5 text-orange-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                      <span className="font-bold text-xs md:text-sm text-slate-900">{hotel.rating}</span>
+              <div className="w-full sm:w-2/5 h-40 sm:h-full overflow-hidden relative shrink-0">
+                <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute top-2 left-2">
+                   <div className="bg-white/95 backdrop-blur-sm px-2 py-1 rounded border border-white/20 shadow flex items-center gap-1">
+                      <svg className="w-3 h-3 text-orange-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span className="font-bold text-[10px] text-slate-900">{hotel.rating}</span>
                    </div>
                 </div>
               </div>
 
-              {/* Center: Info */}
-              <div className="flex-1 p-3 md:p-6 flex flex-col justify-center">
-                <div className="flex items-center gap-1.5 mb-1.5">
-                  <span className="text-blue-600 text-[9px] md:text-[10px] font-black uppercase tracking-widest">{hotel.location}</span>
-                  <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
-                  <span className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase tracking-widest">{hotel.reviewsCount}+ Reviews</span>
+              {/* Center & Right: Info */}
+              <div className="flex-1 p-4 md:p-5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1.5">
+                    <span className="text-blue-600 text-[10px] font-bold uppercase tracking-wider">{hotel.location}</span>
+                    <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{hotel.reviewsCount}+ Reviews</span>
+                  </div>
+                  <h3 className="font-luxury text-xl md:text-2xl font-bold mb-2 text-slate-900 group-hover:text-blue-600 transition-colors leading-tight line-clamp-1">{hotel.name}</h3>
+                  <div className="flex flex-wrap gap-1 mb-3 hidden sm:flex">
+                    {hotel.tags.map((tag, idx) => (
+                      <span key={idx} className="bg-slate-50 text-slate-500 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-slate-100">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="font-luxury text-lg md:text-2xl font-bold mb-2 md:mb-3 text-slate-900 group-hover:text-blue-600 transition-colors">{hotel.name}</h3>
-                <div className="flex flex-wrap gap-1 mb-2 md:mb-3">
-                  {hotel.tags.map((tag, idx) => (
-                    <span key={idx} className="bg-slate-50 text-slate-500 text-[7px] md:text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 md:px-2 md:py-1 rounded-md border border-slate-100">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-slate-400 text-[10px] md:text-xs leading-relaxed max-w-sm">
-                  Experience world-class hospitality with stunning views and bespoke services designed for the elite traveler.
-                </p>
-              </div>
 
-              {/* Right: Price & CTA */}
-              <div className="md:w-1/4 p-3 md:p-6 bg-slate-50 flex flex-col justify-center items-center md:items-end border-t md:border-t-0 md:border-l border-slate-100">
-                   <div className="text-center md:text-right mb-2 md:mb-4">
-                     <span className="text-[7px] md:text-[8px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Starting from</span>
-                     <div className="flex items-baseline gap-1">
-                        <span className="text-[9px] md:text-[10px] font-bold text-slate-400">USD</span>
-                        <span className="text-lg md:text-2xl font-black text-blue-900">${hotel.pricePerNight.toLocaleString()}</span>
-                     </div>
-                     <span className="text-[8px] md:text-[9px] font-bold text-slate-400 block mt-0.5">per night</span>
-                   </div>
-                   <button className="w-full bg-blue-600 text-white text-xs md:text-sm font-black px-3 md:px-4 py-2 md:py-3 rounded-lg md:rounded-xl hover:bg-blue-700 transition-all shadow-md shadow-blue-100 active:scale-95 group-hover:scale-105">
-                     View Rooms
-                   </button>
-                   <p className="mt-2 md:mt-3 text-[7px] md:text-[8px] font-bold text-emerald-600 uppercase tracking-widest">Free Cancellation</p>
+                <div className="flex items-end justify-between mt-auto">
+                    <div>
+                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">Price</span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-xl md:text-2xl font-black text-slate-900">${hotel.pricePerNight}</span>
+                        <span className="text-[10px] font-bold text-slate-400">/ night</span>
+                      </div>
+                    </div>
+                    <button className="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-all shadow shadow-blue-200 active:scale-95">
+                      View
+                    </button>
+                </div>
               </div>
             </div>
           ))}
@@ -317,7 +313,7 @@ const HotelsPage: React.FC = () => {
               <span key={item} className="text-xs font-bold text-slate-500 hover:text-blue-600 cursor-pointer">{item}</span>
             ))}
          </div>
-         <p className="text-xs text-slate-400">&copy; 2024 Tour Help Desk Ltd. All rights reserved.</p>
+         <p className="text-xs text-slate-400">&copy; 2024 Tour Help Desk Inc. All rights reserved.</p>
       </div>
     </div>
   );

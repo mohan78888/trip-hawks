@@ -5,11 +5,11 @@ const ALL_OFFERS = [
   {
     id: '1',
     category: 'Domestic',
-    title: 'Fly to Mumbai at $2,999',
-    description: 'Special weekend fares for all major cities to Mumbai. Limited seats available.',
-    code: 'MUMFLY',
+    title: 'Fly to London at $500',
+    description: 'Special weekend fares for all major cities to London. Limited seats available.',
+    code: 'Any Thing ELSE',
     discount: 'FLAT $1,000 OFF',
-    image: 'https://images.unsplash.com/photo-1570160897040-30430ade221e?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1572364769167-198dcb7b520c?q=80&w=327&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: 'bg-blue-600'
   },
   {
@@ -17,7 +17,7 @@ const ALL_OFFERS = [
     category: 'International',
     title: 'European Summer Sale',
     description: 'Book your dream European vacation now and save big on return tickets.',
-    code: 'EUROSUMMER',
+    code: 'Any Thing ELSE',
     discount: 'UP TO 15% OFF',
     image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=400',
     color: 'bg-indigo-600'
@@ -25,21 +25,21 @@ const ALL_OFFERS = [
   {
     id: '3',
     category: 'Bank',
-    title: 'HDFC Card Cashback',
-    description: 'Use your HDFC Bank Credit Card to get additional cashback on every flight.',
-    code: 'HDFCHAWK',
+    title: 'Card Cashback',
+    description: 'Use your Any Bank Credit Card to get additional cashback on every flight.',
+    code: 'Any thing Else',
     discount: '10% CASHBACK',
-    image: 'https://images.unsplash.com/photo-1589758438368-2151aa2914f9?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1612351978641-ecdafe9caaa5?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: 'bg-emerald-600'
   },
   {
     id: '4',
     category: 'Domestic',
-    title: 'Goa Calling - Special Offer',
-    description: 'Unwind at the beaches with our special discounted Goa fares.',
-    code: 'BEACHGOA',
+    title: 'Balli Calling - Special Offer',
+    description: 'Unwind at the beaches with our special discounted Bali fares.',
+    code: 'Any Think ELSE',
     discount: 'FLAT 20% OFF',
-    image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&q=80&w=400',
+    image: 'https://plus.unsplash.com/premium_photo-1661878915254-f3163e91d870?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: 'bg-orange-500'
   },
   {
@@ -55,12 +55,152 @@ const ALL_OFFERS = [
   {
     id: '6',
     category: 'Bank',
-    title: 'ICICI Instant Discount',
+    title: 'CREDIT Card Instant Discount',
     description: 'Get an instant discount of up to $2,500 on international sectors.',
-    code: 'ICICIFLY',
+    code: 'CREDITFLY',
     discount: '$2,500 OFF',
-    image: 'https://images.unsplash.com/photo-1601597111158-2fcee29a4a04?auto=format&fit=crop&q=80&w=400',
+    image: 'https://media.istockphoto.com/id/2170880601/photo/customer-making-contactless-payment-in-a-bakery-shop.webp?s=1024x1024&w=is&k=20&c=fdkqx8BnsFBEKhW0LockKo_VfXi4wXtIaWR-IrsNXkw=',
     color: 'bg-blue-500'
+  },
+  {
+    id: '7',
+    category: 'International',
+    title: 'Amore Italy Package',
+    description: 'Experience the magic of Rome, Venice, and Florence with our exclusive flight bundle.',
+    code: 'ITALYLOVE',
+    discount: 'FLAT 15% OFF',
+    image: 'https://plus.unsplash.com/premium_photo-1661962292128-879bb496ce17?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGl0YWx5fGVufDB8fDB8fHww',
+    color: 'bg-red-600'
+  },
+  {
+    id: '8',
+    category: 'International',
+    title: 'Discover China Deals',
+    description: 'Walk the Great Wall and explore ancient temples. Special discounts on round trips.',
+    code: 'CHINATOUR',
+    discount: 'SAVE $500',
+    image: 'https://images.unsplash.com/photo-1517309230475-6736d926b979?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0',
+    color: 'bg-red-700'
+  },
+  {
+    id: '17',
+    category: 'Domestic',
+    title: 'Singapore City Break',
+    description: 'Discover the spectacular Gardens by the Bay and stunning skyline of Singapore.',
+    code: 'SINGAFLY',
+    discount: 'UP TO 10% OFF',
+    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-red-500'
+  },
+  {
+    id: '18',
+    category: 'Domestic',
+    title: 'Bangkok Adventure',
+    description: 'Experience vibrant street life, ornate shrines, and authentic Thai cuisine.',
+    code: 'BKKTRIP',
+    discount: 'FLAT $50 OFF',
+    image: 'https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-yellow-500'
+  },
+  {
+    id: '19',
+    category: 'Domestic',
+    title: 'New York Explorer',
+    description: 'Take a bite out of the Big Apple in NYC. Flights out now at massive discounts.',
+    code: 'NYCMAGIC',
+    discount: 'SAVE $250',
+    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-sky-600'
+  },
+  {
+    id: '20',
+    category: 'Domestic',
+    title: 'Toronto Calling',
+    description: 'Visit the CN Tower and explore the beautiful diversity of Toronto.',
+    code: 'YYZDEAL',
+    discount: 'FLAT $100 OFF',
+    image: 'https://images.unsplash.com/photo-1588733103629-b77afe0425ce?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    color: 'bg-red-600'
+  },
+  {
+    id: '21',
+    category: 'Domestic',
+    title: 'Sydney Harbor Holiday',
+    description: 'Sun, surf, and the iconic Opera House! Sydney is waiting for you.',
+    code: 'SYDNEYGO',
+    discount: '10% CASHBACK',
+    image: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-blue-600'
+  },
+  {
+    id: '22',
+    category: 'Domestic',
+    title: 'Paris Romance',
+    description: 'Fall in love with the city of lights. Special couples fare available.',
+    code: 'PARISLOVE',
+    discount: '20% OFF FOR TWO',
+    image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-fuchsia-500'
+  },
+  {
+    id: '23',
+    category: 'Domestic',
+    title: 'Kuala Lumpur Getaway',
+    description: 'Witness the majesty of the Petronas Twin Towers. Book early for best fares.',
+    code: 'KLPROMO',
+    discount: 'SAVE $75',
+    image: 'https://images.unsplash.com/photo-1562060726-e47264af32bd?q=80&w=465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    color: 'bg-teal-500'
+  },
+  {
+    id: '24',
+    category: 'Domestic',
+    title: 'Istanbul Crossroads',
+    description: 'Where East meets West. Discover the rich history of Istanbul.',
+    code: 'ISTANBULFARE',
+    discount: '$120 OFF',
+    image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-orange-600'
+  },
+  {
+    id: '25',
+    category: 'Domestic',
+    title: 'Tokyo Neon Nights',
+    description: 'Experience futuristic Tokyo, from Shibuya crossing to historic temples.',
+    code: 'TOKYOTRIP',
+    discount: 'SAVE $300',
+    image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-pink-500'
+  },
+  {
+    id: '26',
+    category: 'Domestic',
+    title: 'Seoul Soul',
+    description: 'K-pop culture, palaces, and amazing food await you in Seoul.',
+    code: 'SEOULFLY',
+    discount: 'FLAT 15% OFF',
+    image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-purple-600'
+  },
+  {
+    id: '27',
+    category: 'Domestic',
+    title: 'Berlin Explorer 🇩🇪',
+    description: 'Experience the rich history, art, and vibrant culture of Germany’s capital.',
+    code: 'BERLINFLY',
+    discount: 'SAVE $150',
+    image: 'https://images.unsplash.com/photo-1560930950-5cc20e80e392?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-indigo-600'
+  },
+  {
+    id: '28',
+    category: 'Domestic',
+    title: 'Amsterdam Canals',
+    description: 'Discover the scenic canals, historic museums, and incredible architecture.',
+    code: 'AMSTERFLY',
+    discount: 'FLAT 12% OFF',
+    image: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&q=80&w=400',
+    color: 'bg-orange-500'
   }
 ];
 
@@ -119,33 +259,33 @@ const OffersPage: React.FC<OffersPageProps> = ({ onBack }) => {
 
       {/* Offers Grid */}
       <section className="max-w-7xl mx-auto px-4 mt-10 md:mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {filteredOffers.map((offer) => (
-            <div key={offer.id} className="bg-white rounded-2xl md:rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-md md:shadow-lg group hover:shadow-xl md:hover:shadow-2xl hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-500">
-              <div className="h-32 md:h-48 relative overflow-hidden">
-                <img src={offer.image} alt={offer.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute top-2 left-2 md:top-4 md:left-4">
-                  <div className={`px-2.5 py-1 md:px-4 md:py-1.5 rounded-full text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest ${offer.color} shadow-md md:shadow-lg`}>
+            <div key={offer.id} className="bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-100 shadow-md group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+              <div className="h-32 md:h-40 relative overflow-hidden shrink-0">
+                <img src={offer.image} alt={offer.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute top-3 left-3">
+                  <div className={`px-2.5 py-1 md:px-3 md:py-1 rounded-full text-white text-[8px] md:text-[9px] font-black uppercase tracking-widest ${offer.color} shadow-sm`}>
                     {offer.discount}
                   </div>
                 </div>
               </div>
-              <div className="p-4 md:p-8">
-                <div className="flex items-center gap-2 mb-2 md:mb-3 text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <div className="p-4 md:p-5 flex flex-col flex-grow">
+                <div className="flex items-center gap-1.5 mb-2 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                   <svg className="w-2.5 h-2.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                   {offer.category}
                 </div>
-                <h3 className="text-base md:text-xl font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-blue-600 transition-colors">{offer.title}</h3>
-                <p className="text-xs md:text-sm text-slate-500 leading-relaxed mb-4 md:mb-8">
+                <h3 className="text-base md:text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors leading-snug">{offer.title}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed mb-4 flex-grow">
                   {offer.description}
                 </p>
                 
-                <div className="flex items-center justify-between bg-slate-50 rounded-xl md:rounded-2xl p-3 md:p-4 border border-slate-100 group-hover:border-blue-100 transition-colors">
+                <div className="flex items-center justify-between bg-slate-50 rounded-xl p-3 border border-slate-100 group-hover:border-blue-100 transition-colors mt-auto">
                   <div>
-                    <span className="text-[8px] md:text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Use Code</span>
-                    <span className="text-sm md:text-lg font-black text-blue-900 tracking-tight">{offer.code}</span>
+                    <span className="text-[8px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">Use Code</span>
+                    <span className="text-sm font-black text-blue-900 tracking-tight">{offer.code}</span>
                   </div>
-                  <button className="text-blue-600 font-black text-[10px] md:text-xs hover:underline decoration-2 underline-offset-4">COPY CODE</button>
+                  <button className="text-blue-600 font-bold text-[10px] hover:text-blue-800 transition-colors">COPY</button>
                 </div>
               </div>
             </div>
@@ -154,31 +294,31 @@ const OffersPage: React.FC<OffersPageProps> = ({ onBack }) => {
       </section>
 
       {/* Special Call-Only Section */}
-      <section className="max-w-7xl mx-auto px-4 mt-24">
-        <div className="bg-slate-900 rounded-[3rem] p-8 md:p-16 relative overflow-hidden flex flex-col md:flex-row items-center gap-12 group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -z-0"></div>
+      <section className="max-w-7xl mx-auto px-4 mt-16">
+        <div className="bg-slate-900 rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col md:flex-row items-center gap-6 md:gap-8 group">
+          <div className="absolute top-0 right-0 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl -z-0"></div>
           
           <div className="shrink-0 relative z-10">
-             <div className="w-24 h-24 bg-orange-500 rounded-[2rem] flex items-center justify-center text-white shadow-2xl animate-float">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             <div className="w-16 h-16 md:w-20 md:h-20 bg-orange-500 rounded-2xl flex items-center justify-center text-white shadow-xl animate-float">
+                <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                 </svg>
              </div>
           </div>
           
           <div className="flex-grow text-center md:text-left relative z-10">
-             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Unlock Hidden "Call-Only" Deals</h2>
-             <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
-               Some premium airline inventory is strictly available via phone booking only. Save up to <span className="text-orange-500 font-black underline">$4,000 extra</span> on business and first-class travel.
+             <h2 className="text-2xl md:text-3xl font-black text-white mb-3">Unlock Hidden "Call-Only" Deals</h2>
+             <p className="text-slate-400 text-sm md:text-base max-w-xl leading-relaxed">
+               Some premium airline inventory is strictly available via phone booking only. Save up to <span className="text-orange-500 font-black underline">$3,000 extra</span> on business and first-class travel.
              </p>
           </div>
-          
+           
           <div className="shrink-0 relative z-10">
-             <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 text-center">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-4">Priority Support Line</span>
-                <a href="tel:18887918007" className="text-3xl font-black text-white hover:text-orange-500 transition-colors block mb-6">1888 791 8007</a>
-                <div className="flex items-center justify-center gap-2 text-emerald-400 text-xs font-bold">
-                   <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+             <div className="bg-white/5 backdrop-blur-md rounded-2xl p-4 border border-white/10 text-center">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-2">Priority Support Line</span>
+                <a href="tel:18887918007" className="text-2xl font-black text-white hover:text-orange-500 transition-colors block mb-4">1888 791 8007</a>
+                <div className="flex items-center justify-center gap-2 text-emerald-400 text-[10px] font-bold">
+                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
                    Expert Agents Online Now
                 </div>
              </div>
