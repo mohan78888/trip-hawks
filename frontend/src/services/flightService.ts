@@ -24,7 +24,7 @@ export const flightService = {
       return data.flights || [];
     } catch (error) {
       console.error('Flight search error:', error);
-      return this.getMockFlights(params);
+      throw error;
     }
   },
 

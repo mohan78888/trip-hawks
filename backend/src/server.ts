@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { authMiddleware } from './middleware/auth.js';
-import { searchFlights, getFlightDetails } from './controllers/flightController.js';
+import { searchFlights, getFlightDetails, preCachePopularRoutes } from './controllers/flightController.js';
 import { chatWithAgent } from './controllers/aiController.js';
 import { clerkWebhook } from './controllers/webhookController.js';
 import { signup, login, getProfile } from './controllers/authController.js';
@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 5000;
 // ── CORS ──────────────────────────────────────────────────────────────────────
 const allowedOrigins: string[] = [
   'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
   'http://localhost:5173',
   'http://127.0.0.1:3000',
 ];
@@ -26,6 +28,10 @@ app.use(cors({
     // Allow requests with no origin (mobile apps, Postman, curl)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow any local network IP for testing (e.g. 192.168.x.x)
+    if (origin.startsWith('http://192.168.') || origin.startsWith('http://10.') || origin.startsWith('http://172.')) {
+      return callback(null, true);
+    }
     // Allow any netlify.app or vercel.app subdomain
     if (origin.endsWith('.netlify.app') || origin.endsWith('.vercel.app')) {
       return callback(null, true);
@@ -125,4 +131,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📡 API available at http://localhost:${PORT}/api`);
   console.log(`🏥 Health check at http://localhost:${PORT}/health`);
+  
+  // Pre-cache popular routes in the background
+  preCachePopularRoutes().catch(err => console.error('Error pre-caching routes:', err));
 });

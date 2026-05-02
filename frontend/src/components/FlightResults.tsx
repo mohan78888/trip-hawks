@@ -76,10 +76,16 @@ const FlightResults: React.FC<FlightResultsProps> = ({ flights, onBook }) => {
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest text-left md:text-center">Per Adult</p>
                 </div>
                 <button 
-                  onClick={() => onBook(flight)}
+                  onClick={() => {
+                    if (flight.bookingLink) {
+                      window.open(flight.bookingLink, '_blank');
+                    } else {
+                      onBook(flight);
+                    }
+                  }}
                   className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 md:px-8 py-2 md:py-2.5 text-sm md:text-base rounded-xl transition-all shadow-lg shadow-orange-100 active:scale-95 group-hover:scale-105"
                 >
-                  Book
+                  Book Now
                 </button>
               </div>
             </div>

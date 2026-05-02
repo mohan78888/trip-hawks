@@ -10,6 +10,8 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
 
+  const searchTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
@@ -19,6 +21,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
     const from = (formData.get('from') as string).trim();
     const to = (formData.get('to') as string).trim();
     const date = formData.get('date') as string;
+    const returnDate = formData.get('returnDate') as string;
     const passengers = Number(formData.get('passengers')) || 1;
     const travelClass = (formData.get('travelClass') as string) || 'Economy';
 
@@ -28,8 +31,14 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
       return;
     }
 
-    await onSearch({ from, to, date, passengers, travelClass });
-    setIsPending(false);
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    searchTimeoutRef.current = setTimeout(async () => {
+      await onSearch({ from, to, date, returnDate, passengers, travelClass });
+      setIsPending(false);
+    }, 600); // 600ms debounce
   };
 
   return (
@@ -60,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               {/* From */}
-              <div className="md:col-span-3">
+              <div className="md:col-span-6 lg:col-span-2">
                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 px-1">From</label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600">
@@ -77,7 +86,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
               </div>
 
               {/* To */}
-              <div className="md:col-span-3">
+              <div className="md:col-span-6 lg:col-span-2">
                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 px-1">To</label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600">
@@ -94,7 +103,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
               </div>
 
               {/* Date */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-6 lg:col-span-2">
                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 px-1">Departure</label>
                 <input
                   type="date"
@@ -104,8 +113,18 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
                 />
               </div>
 
+              {/* Return Date */}
+              <div className="md:col-span-6 lg:col-span-2">
+                <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 px-1">Return</label>
+                <input
+                  type="date"
+                  name="returnDate"
+                  className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all outline-none font-bold text-slate-900"
+                />
+              </div>
+
               {/* Passengers */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-6 lg:col-span-2">
                 <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 px-1">Travelers</label>
                 <select
                   name="passengers"
@@ -120,7 +139,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
               </div>
 
               {/* CTA */}
-              <div className="md:col-span-2 flex items-end">
+              <div className="md:col-span-6 lg:col-span-2 flex items-end">
                 <button
                   type="submit"
                   disabled={isLoading || isPending}
@@ -138,6 +157,17 @@ const Hero: React.FC<HeroProps> = ({ onSearch, isLoading }) => {
                     </>
                   )}
                 </button>
+              </div>
+
+              {/* Mobile/Tablet Call Now Button */}
+              <div className="col-span-1 md:col-span-12 lg:hidden flex items-end mt-1">
+                <a 
+                  href="tel:18887918007"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-orange-100 active:scale-95 flex items-center justify-center gap-2 h-[58px]"
+                >
+                  <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                  Call for Offline Booking
+                </a>
               </div>
             </div>
 

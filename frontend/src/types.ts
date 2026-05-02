@@ -14,6 +14,7 @@ export interface Flight {
   class: string;
   baggage?: string;
   refundable?: boolean;
+  bookingLink?: string;
 }
 
 export interface Hotel {
@@ -31,6 +32,7 @@ export interface SearchParams {
   from: string;
   to: string;
   date: string;
+  returnDate?: string;
   passengers: number;
   travelClass: string;
 }
